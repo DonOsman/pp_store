@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PPStore.Data;
 
-namespace PPStore.Data.Migrations
+namespace PPStore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200116023223_AddPizzaAndOrderModels")]
-    partial class AddPizzaAndOrderModels
+    [Migration("20200129155057_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
