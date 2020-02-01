@@ -7,7 +7,7 @@ using PPStore.Models;
 
 namespace PPStore.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<PPUser>
     {
         public DbSet<Pizza> Pizzas { get; set; }
      
@@ -19,7 +19,12 @@ namespace PPStore.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+        }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<OrderPizza>().HasKey(orderPizza => new {orderPizza.OrderId, orderPizza.PizzaId});
         }
     }
 }

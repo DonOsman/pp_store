@@ -1,15 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PPStore.Models
 {
     public class Order : BaseModel
     {
-        public string Name { get; set; }
-        [Required]
-        public Address Address { get; set; }
-        [Required]
-        public Pizza Pizza { get; set; }
-        [Required]
-        public int PizzaCount { get; set; }
+        [Required] public PPUser PpUser { get; set; }
+        [Required] public ICollection<OrderPizza> Pizzas { get; set; }
+        [Required] public DateTime OrderTime { get; set; }
     }
 }
