@@ -10,7 +10,7 @@ namespace PPStore.Models
         [Required] public Order Order { get; set; }
         [Required] public Pizza Pizza { get; set; }
         [Required] public int Amount { get; set; }
-        [Required] public decimal UnitCost { get; set; }
+        [Required] public int UnitCost { get; set; }
 
         [NotMapped] public decimal Cost => Amount * UnitCost;
     }

@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PPStore.Models;
+using PPStore.Services;
+using PPStore.Services.Interfaces;
 
 
 namespace PPStore
@@ -34,6 +36,8 @@ namespace PPStore
 
             services.AddDefaultIdentity<PPUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddScoped<IOrderService, OrderService>();
             services.AddControllersWithViews();
            services.AddRazorPages();
         }
