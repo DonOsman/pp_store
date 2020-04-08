@@ -191,6 +191,9 @@ namespace PPStore.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
                     b.HasKey("ID");
 
                     b.HasIndex("PpUserId");
@@ -209,8 +212,8 @@ namespace PPStore.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("integer");
 
-                    b.Property<decimal>("UnitCost")
-                        .HasColumnType("numeric");
+                    b.Property<int>("UnitCost")
+                        .HasColumnType("integer");
 
                     b.HasKey("OrderId", "PizzaId");
 

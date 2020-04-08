@@ -31,12 +31,14 @@ namespace PPStore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddEntityFrameworkNpgsql().AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<PPUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-
+                .AddEntityFrameworkStores<ApplicationDbContext>().AddUserManager<UserManager<PPUser>>();
+            
+            services.AddScoped<IDisposable, UserManager<PPUser>>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddControllersWithViews();
            services.AddRazorPages();

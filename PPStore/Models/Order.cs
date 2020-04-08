@@ -11,6 +11,10 @@ namespace PPStore.Models
 		[Required] public DateTime OrderTime { get; set; }
 		[Required] public OrderStatus Status { get; set; }
 
+		public Order()
+		{
+		}
+
 		public Order(PPUser user, ICollection<OrderPizza> pizzas)
 		{
 			PpUser = user;
